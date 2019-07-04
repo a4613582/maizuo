@@ -1,5 +1,11 @@
 <template>
-  <van-list v-model="filmLoading" @load="getFilmList" :finished="isFinished" finished-text="别拉了">
+  <van-list
+    v-model="filmLoading"
+    @load="getFilmList"
+    :finished="isFinished"
+    finished-text="别拉了"
+    ref="myBox"
+  >
     <div class="page-home-films">
       <Banner class="banner" :list="bannerList" pagination loop />
 
@@ -7,14 +13,10 @@
         <span>{{ curCityInfo && curCityInfo.name }}</span>
         <i class="iconfont icon-xiala"></i>
       </div>
-      
-      <van-tabs 
-      v-model="curFilmType" 
-      sticky>
+
+      <van-tabs v-model="curFilmType" sticky>
         <van-tab title="正在热映">
-          <Filmlist 
-          filmType="nowPlaying" 
-          :list="filmList" />
+          <Filmlist filmType="nowPlaying" :list="filmList" />
         </van-tab>
         <van-tab title="即将上映">
           <Filmlist filmType="comingSoon" :list="filmList" />
@@ -76,6 +78,7 @@ export default {
   },
   watch: {
     curFilmType(newVal, oldVal) {
+      this.$refs.myBox.$el.scrollTop = 0;
       this.getFilmList(true);
     }
   },

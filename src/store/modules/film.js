@@ -71,17 +71,20 @@ const actions = {
       });
   },
 
-  getFilmList({ commit, state,rootState }, isChangeFilmType) {
+  getFilmList({ commit, state, rootState }, isChangeFilmType) {
     // 判断 isChangeFilmType
     if (isChangeFilmType) {
       //1.清空filmlist
       commit({
-        type:"setFilmList",list: [], total: 1
+        type: "setFilmList",
+        list: [],
+        total: 1
       });
       commit({
-        type:"setPageNum",num:1
+        type: "setPageNum",
+        num: 1
       });
-    };   
+    }
     // 请求之前， loading
     Toast.loading({ duration: 0, mask: true, message: "加载中..." });
     axios

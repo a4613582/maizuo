@@ -8,7 +8,7 @@
 import { mapActions } from "vuex";
 
 export default {
-  name:"app",
+  name: "App",
 
   methods: {
     ...mapActions("city", ["getCities"])
@@ -22,6 +22,5 @@ export default {
     // }
     this.getCities();
   }
-}
+};
 </script>
-

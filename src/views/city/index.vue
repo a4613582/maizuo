@@ -1,5 +1,5 @@
 <template>
-<div class="page-city">
+  <div class="page-city">
     <van-search v-model="searchVal" placeholder="请输入搜索关键词" />
 
     <!-- 拼音检索 -->
@@ -28,20 +28,29 @@
             </ul>
           </div>
         </div>
-        <li :ref="'box_' + item.py" class="lv-indexsection" v-for="item in cityList" :Key="item.py">
+        <li
+          :ref="'box_' + item.py"
+          class="lv-indexsection"
+          v-for="item in cityList"
+          :Key="item.py"
+        >
           <p class="lv-indexsection__index">{{ item.py }}</p>
           <ul>
             <li
               v-for="city in item.list"
               :Key="city.cityId"
               @click="handleChgCity(city)"
-            >{{ city.name }}</li>
+            >
+              {{ city.name }}
+            </li>
           </ul>
         </li>
       </ul>
       <div class="lv-indexlist__nav">
         <ul>
-          <li v-for="item in indexlist" :key="item" @click="goTop(item)">{{ item }}</li>
+          <li v-for="item in indexlist" :key="item" @click="goTop(item)">
+            {{ item }}
+          </li>
         </ul>
       </div>
     </div>
@@ -53,7 +62,9 @@
           v-for="city in searchList"
           :key="city.cityId"
           @click="handleChgCity(city)"
-        >{{ city.name }}</li>
+        >
+          {{ city.name }}
+        </li>
       </ul>
 
       <div class="empty-result" v-show="!searchList.length">
@@ -103,7 +114,7 @@ export default {
       box.scrollTop = offsetTop;
     },
     /**
-     * 修改当前选择城市 
+     * 修改当前选择城市
      */
     handleChgCity(city) {
       //1.获取当前点击的城市的城市id
@@ -117,9 +128,8 @@ export default {
       //this.$router.back();
       this.$router.go(-1);
       //将城市id给本地存储起来
-      window.localStorage.setItem("curCityId", cityId)
+      window.localStorage.setItem("curCityId", cityId);
     }
-    
   },
 
   created() {

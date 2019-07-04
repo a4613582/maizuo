@@ -19,7 +19,7 @@
               <span class="item">{{ item.filmType.name }}</span>
             </div>
             <div
-              v-show="filmType==='nowPlaying'"
+              v-show="filmType === 'nowPlaying'"
               class="film-grade info-col"
               style="visibility: visible;"
             >
@@ -29,15 +29,23 @@
             <div class="film-actors info-col">
               <span class="label">主演：{{ item.actors | actorFormat }}</span>
             </div>
-            <div v-show="filmType==='nowPlaying'" class="film-detail info-col">
-              <span class="label">{{ item.nation }} | {{ item.runtime }}分钟</span>
+            <div
+              v-show="filmType === 'nowPlaying'"
+              class="film-detail info-col"
+            >
+              <span class="label"
+                >{{ item.nation }} | {{ item.runtime }}分钟</span
+              >
             </div>
-            <div v-show="filmType==='comingSoon'" class="film-detail info-col">
+            <div
+              v-show="filmType === 'comingSoon'"
+              class="film-detail info-col"
+            >
               <span class="label">上映日期：{{ item.premiereAt }}</span>
             </div>
           </div>
-          <div class="buy" v-show="filmType==='nowPlaying'">购票</div>
-          <div class="buy" v-show="filmType==='comingSoon'">预约</div>
+          <div class="buy" v-show="filmType === 'nowPlaying'">购票</div>
+          <div class="buy" v-show="filmType === 'comingSoon'">预约</div>
         </router-link>
       </li>
     </ul>
@@ -58,28 +66,24 @@ export default {
     filmType: String
   },
 
-  methods: {
-    
-  },
-      filters: {
-        actorFormat(actors = []) {
-          let tmp = actors.map(item => item.name);
-          return tmp.length ? tmp.join(" ") : "暂无主演";
-        },
-  
-        fil1(value) {
-          return value.split("")[0];
-        },
-  
-        fil2(value, str1, str2) {
-          // console.log(value);
-          // console.log(str1);
-          // console.log(str2);
-          return value;
-        }
-      }
+  methods: {},
+  filters: {
+    actorFormat(actors = []) {
+      let tmp = actors.map(item => item.name);
+      return tmp.length ? tmp.join(" ") : "暂无主演";
+    },
 
+    fil1(value) {
+      return value.split("")[0];
+    },
 
+    fil2(value, str1, str2) {
+      // console.log(value);
+      // console.log(str1);
+      // console.log(str2);
+      return value;
+    }
+  }
 };
 </script>
 
